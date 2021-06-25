@@ -3,7 +3,10 @@ import Link from "next/link"
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
-export default function Home() {
+export default function Home({ data }) {
+
+  const recipes = data.recipes;
+
   return (
     <div className={styles.container}>
       <Head>
@@ -13,9 +16,10 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+        <h1 className={styles.title}>Intro to Next.js with Kap</h1>
+        <Link href="/about">
+          <a>{recipes[0].title}</a>
+        </Link>
 
         <p className={styles.description}>
           Get started by editing{' '}
@@ -70,10 +74,16 @@ export default function Home() {
 }
 
 // This runs when you build and deploy your Next site. The function receives different parameters and returns what becomes our pages props
-
+// The data returned will be saved to a static JSON file
+// Need to return something that can be turned into JSON
 export function getStaticProps() {
 
   return {
+    props: {
+      data: {
+        recipes: [{ title: "Pineapple Smoothie" }],
+      }
+    }
 
   }
 

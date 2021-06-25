@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Link from "next/link"
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
@@ -66,4 +67,14 @@ export default function Home() {
       </footer>
     </div>
   )
+}
+
+// This runs when you build and deploy your Next site. The function receives different parameters and returns what becomes our pages props
+
+export function getStaticProps() {
+
+  return {
+
+  }
+
 }
